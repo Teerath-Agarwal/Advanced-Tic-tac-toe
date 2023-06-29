@@ -1,16 +1,16 @@
 const cells = document.querySelectorAll('.cell');
-const reset_board = document.getElementById('board');
+const reset_board = document.getElementById('rboard');
+const reset_score = document.getElementById('rscore');
 const resultPopup = document.getElementById('result-popup');
 const resultMessage = document.getElementById('result-message');
-const temp = document.querySelectorAll('.scoreboard-count');
+const count = document.querySelectorAll('.scoreboard-count');
 const countobj = {};
 
-temp.forEach((element) => {
+count.forEach((element) => {
     countobj[element.id] = element;
 });
 
 let curPl = 'X';
-let gameEnded = false;
 let board = ['', '', '', '', '', '', '', '', ''];
 const winComb = [
     [0, 1, 2], [3, 4, 5], [6, 7, 8],
@@ -29,7 +29,7 @@ let remComb = {
 };
 
 function handleCellClick(idx) {
-    if (board[idx] === '' && !gameEnded) {
+    if (board[idx] === '') {
         board[idx] = curPl;
         cells[idx].textContent = curPl;
         cells[idx].style.pointerEvents = 'none';
@@ -73,19 +73,16 @@ function checkDraw() {
 }
 
 function endGame(message) {
-    gameEnded = true;
     resultMessage.textContent = message;
     resultPopup.style.display = 'block';
 
     setTimeout(function () {
-        resultPopup.style.display = "none";
         resetGame();
         updateScore();
     }, 1500);
 }
 
 function resetGame() {
-    gameEnded = false;
     board = ['', '', '', '', '', '', '', '', ''];
     remComb['X'] = winComb;
     remComb['O'] = winComb;
@@ -107,6 +104,27 @@ function updateScore() {
         }, 500);
     }, 500);
 }
+function resetScore(){
+    score.D = 0;
+    score.X = 0;
+    score.O = 0;
+    count.forEach((element) => {
+        element.classList.add('fadeout');
+    });
+    setTimeout(function () {
+        count.forEach((element) => {
+            element.textContent = 0;
+            element.classList.remove('fadeout');
+            element.classList.add('fadein');
+        });
+        setTimeout(function () {
+            count.forEach((element) => {
+                element.classList.remove('fadein');
+            });
+        }, 500);
+    }, 500);
+}
+
 
 resultPopup.style.display = 'none';
 cells.forEach((cell, idx) => {
@@ -114,3 +132,4 @@ cells.forEach((cell, idx) => {
 });
 
 reset_board.addEventListener('click', resetGame);
+reset_score.addEventListener('click', resetScore);
