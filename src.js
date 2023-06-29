@@ -74,8 +74,8 @@ function checkDraw() {
 
 function endGame(message) {
     resultMessage.textContent = message;
-    resultPopup.style.display = 'block';
-
+    resultPopup.style.display = 'flex';
+    
     setTimeout(function () {
         resetGame();
         updateScore();
@@ -104,6 +104,7 @@ function updateScore() {
         }, 500);
     }, 500);
 }
+
 function resetScore(){
     score.D = 0;
     score.X = 0;
@@ -124,7 +125,6 @@ function resetScore(){
         }, 500);
     }, 500);
 }
-
 
 resultPopup.style.display = 'none';
 cells.forEach((cell, idx) => {
