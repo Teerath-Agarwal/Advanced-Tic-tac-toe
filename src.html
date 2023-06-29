@@ -1,29 +1,54 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>Tic Tac Toe</title>
-  <link href="src.css" rel="stylesheet" />
+    <title>Tic Tac Toe</title>
+    <link href="src.css" rel="stylesheet" />
 </head>
+
 <body>
-  <h1>Tic Tac Toe</h1>
-  <div id="board" class="board">
-    <div class="cell"></div>
-    <div class="cell"></div>
-    <div class="cell"></div>
-    <div class="cell"></div>
-    <div class="cell"></div>
-    <div class="cell"></div>
-    <div class="cell"></div>
-    <div class="cell"></div>
-    <div class="cell"></div>
-  </div>
-  <button id="reset">RESET</button>
+    <div id="heading">Tic Tac Toe</div>
+    <div class="cl1">
+        <div class="cl2">
+            <div class="board">
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+            </div>
+            <button class="reset" id="board">RESET BOARD</button>
+        </div>
+        <div class="cl2">
+            <div class="scoreboard">
+                <div class="subheading">Score Board</div>
+                <div class="scoreboard-item">
+                    <span class="scoreboard-label">X Wins: </span>
+                    <span id="X" class="scoreboard-count">0</span>
+                </div>
+                <div class="scoreboard-item">
+                    <span class="scoreboard-label">O Wins: </span>
+                    <span id="O" class="scoreboard-count" class="fade">0</span>
+                </div>
+                <div class="scoreboard-item">
+                    <span class="scoreboard-label">Draws: </span>
+                    <span id="D" class="scoreboard-count" class="fade">0</span>
+                </div>
+            </div>
+            <button class="reset" id="score">RESET SCORE</button>
+        </div>
+    </div>
 
-  <div id="result-popup">
-    <h2 id="result-message"></h2>
-    <!-- <button id="close-popup">Close</button> -->
-  </div>
+    <div id="result-popup">
+        <div id="result-message"></div>
+        <!-- <button id="close-popup">Close</button> -->
+    </div>
 
-  <script src="src.js"></script>
-  </body>
+    <script src="src.js"></script>
+</body>
+
 </html>
