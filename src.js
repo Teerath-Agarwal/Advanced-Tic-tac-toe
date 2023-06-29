@@ -43,8 +43,6 @@ function handleCellClick(idx) {
             for (let i of arr) if (i == idx) return false;
             return true;
         });
-        console.log("x_size:" + remComb['X'].length);
-        console.log("o_size:" + remComb['O'].length);
         if (checkDraw()) {
             endGame("It's a draw!");
         }
@@ -74,12 +72,20 @@ function checkDraw() {
 
 function endGame(message) {
     resultMessage.textContent = message;
+    resultPopup.classList.add('fadein');
     resultPopup.style.display = 'flex';
-    
     setTimeout(function () {
-        resetGame();
-        updateScore();
-    }, 1500);
+        resultPopup.classList.remove('fadein');
+        setTimeout(function () {
+            resetGame();
+            resultPopup.classList.add('fadeout');
+            setTimeout(function () {
+                resultPopup.style.display = 'none';
+                resultPopup.classList.remove('fadeout');
+                updateScore();
+            }, 500);
+        }, 500);
+    }, 500);
 }
 
 function resetGame() {
@@ -90,7 +96,6 @@ function resetGame() {
         cell.textContent = '';
         cell.style.pointerEvents = 'auto';
     });
-    resultPopup.style.display = 'none';
 }
 
 function updateScore() {
