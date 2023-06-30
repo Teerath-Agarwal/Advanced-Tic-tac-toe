@@ -134,7 +134,7 @@ function resetScore() {
 }
 
 function updateFlexDirection() {
-    const isMobileDevice = window.innerWidth <= 767;
+    const isMobileDevice = (window.innerWidth <= 1000) || (/Mobi|Android/i.test(navigator.userAgent));
     class1.style.flexDirection = isMobileDevice ? 'column' : 'row';
 }
 
