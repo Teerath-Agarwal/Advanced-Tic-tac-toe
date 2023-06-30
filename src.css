@@ -22,11 +22,8 @@ body {
 .cl1 {
     font-family: sans-serif;
     display: flex;
-    flex-direction: row;
-    /* align-items: center; */
-    width: 1400px;
-    height: 876px;
-    justify-content: space-between;
+    width: 100%;
+    justify-content: center;
 }
 
 .cl2 {
@@ -77,8 +74,7 @@ body {
 }
 
 .scoreboard {
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin: 75px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

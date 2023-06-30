@@ -3,6 +3,8 @@ const reset_board = document.getElementById('rboard');
 const reset_score = document.getElementById('rscore');
 const resultPopup = document.getElementById('result-popup');
 const resultMessage = document.getElementById('result-message');
+const class1 = document.querySelector('.cl1');
+
 const count = document.querySelectorAll('.scoreboard-count');
 const countobj = {};
 
@@ -110,7 +112,7 @@ function updateScore() {
     }, 500);
 }
 
-function resetScore(){
+function resetScore() {
     score.D = 0;
     score.X = 0;
     score.O = 0;
@@ -131,10 +133,18 @@ function resetScore(){
     }, 500);
 }
 
+function updateFlexDirection() {
+    const isMobileDevice = window.innerWidth <= 767;
+    class1.style.flexDirection = isMobileDevice ? 'column' : 'row';
+}
+
+
+updateFlexDirection();
 resultPopup.style.display = 'none';
 cells.forEach((cell, idx) => {
     cell.addEventListener('click', () => handleCellClick(idx));
 });
 
+window.addEventListener('resize', updateFlexDirection);
 reset_board.addEventListener('click', resetGame);
 reset_score.addEventListener('click', resetScore);
